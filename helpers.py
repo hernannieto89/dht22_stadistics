@@ -21,3 +21,8 @@ def check_sudo():
         print >> sys.stderr, "You need to have root privileges to run this script.\n" \
                              "Please try again, this time using 'sudo'. Exiting."
         sys.exit(1)
+
+
+def get_ht(sensor, pin):
+    humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+    return humidity, temperature

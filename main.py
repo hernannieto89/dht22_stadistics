@@ -3,7 +3,7 @@
 Simple timer - Main module.
 """
 import argparse
-from helpers import check_sudo, setup
+from helpers import check_sudo, setup, get_ht
 
 
 def main():
@@ -31,7 +31,7 @@ def main():
     sensor = setup(pin)
 
     if one_value:
-        humidity, temperature = sensor.read_retry(sensor, pin)
+        humidity, temperature = get_ht(sensor, pin)
         print('Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(temperature, humidity))
 
     # Reset GPIO settings
