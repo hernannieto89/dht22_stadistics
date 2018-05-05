@@ -34,8 +34,8 @@ def main():
         try:
             humidity, temperature = get_ht(sensor, pin)
         except Exception:
-            temperature = "-1"
-            humidity = "-1"
+            temperature = -1
+            humidity = -1
 
         print('Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(temperature, humidity))
 
