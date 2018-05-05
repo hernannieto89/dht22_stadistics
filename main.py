@@ -31,7 +31,12 @@ def main():
     sensor = setup(pin)
 
     if one_value:
-        humidity, temperature = get_ht(sensor, pin)
+        try:
+            humidity, temperature = get_ht(sensor, pin)
+        except Exception:
+            temperature = "NULL"
+            humidity = "NULL"
+
         print('Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(temperature, humidity))
 
     # Reset GPIO settings
