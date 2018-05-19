@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 
 import RPi.GPIO as GPIO
 import Adafruit_DHT
@@ -25,4 +26,7 @@ def check_sudo():
 
 def get_ht(sensor, pin):
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+    if humidity > 100 or temperature > 100:
+        time.sleep(3)
+        humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     return humidity, temperature
